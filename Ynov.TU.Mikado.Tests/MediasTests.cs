@@ -13,9 +13,9 @@ namespace Ynov.TU.Mikado.Tests.Medias
         private MediaService _mediaService = new MediaService();
 
         [Fact]
-        public void AddNewBookShouldBeTrue()
+        public void AddNewMedia_ShouldBeTrue()
         {
-            var media = FakeMediaFactory.GetTotoBook();
+            var media = FakeMediaFactory.GetTotoBookMedia();
             var (result, errorOption) = 
                 _mediaService
                 .AddMedia(
@@ -34,9 +34,9 @@ namespace Ynov.TU.Mikado.Tests.Medias
         }
 
         [Fact]
-        public void AddExistingBookShouldBeFalse()
+        public void AddExistingMedia_ShouldBeFalse()
         {
-            var media = FakeMediaFactory.GetTotoBook();
+            var media = FakeMediaFactory.GetTotoBookMedia();
             var (result, errorOption) =
                 _mediaService
                 .AddMedia(
@@ -59,9 +59,9 @@ namespace Ynov.TU.Mikado.Tests.Medias
         }
 
         [Fact]
-        public void DeleteExistingBookShouldBeTrue()
+        public void DeleteExistingMedia_ShouldBeTrue()
         {
-            var (id, name, category) = FakeMediaFactory.GetTotoBookWithId();
+            var id = FakeMediaFactory.GetTotoIdMedia();
             var (result, errorOption) = _mediaService.DeleteMedia(id);
 
             result
@@ -75,9 +75,9 @@ namespace Ynov.TU.Mikado.Tests.Medias
         }
 
         [Fact]
-        public void DeleteUnknownBookShouldBeFalse()
+        public void DeleteUnknownMedia_ShouldBeFalse()
         {
-            var id = FakeMediaFactory.GetFakeId();
+            var id = FakeMediaFactory.GetFakeMediaId();
             var (result, errorOption) = _mediaService.DeleteMedia(id);
 
             result

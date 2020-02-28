@@ -9,24 +9,19 @@ namespace Ynov.TU.Mikado.Models
     [Table("Media")]
     public class Media
     {
+        //Media discriminent Id primary key in database media table
         public int Id { get; set; }
+        //Media name
         public string Name { get; set; }
-        public DateTime BorrowDate { get; set; }
-        [ForeignKey("CategoryId")]
-        public int CategoryId { get; set; }
+        //Media category foreign key referencing Category table in database
+        public MediaCategory Category{ get; set; }
     }
 
-    [Table("Category")]
-    public class Category
+    //Enum reflecting Category table (defining a media category)
+    public enum MediaCategory
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-    }
-
-    [Table("Favourite")]
-    public class Favourite
-    {
-        public int UserId { get; set; }
-        public int MediaId { get; set; }
+        Book,
+        Movie,
+        Music
     }
 }
